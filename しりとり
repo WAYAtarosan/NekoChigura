@@ -1,0 +1,25 @@
+n = int(input())
+indegree = [0]*26
+outdegree = [0]*26
+for i in range(n):
+    tmp = input()
+    outdegree[ord(tmp[0])-97] += 1
+    indegree[ord(tmp[-1])-97] += 1
+
+eqlcnt  = 0
+cnt1 = 0
+cnt2 = 0
+for j,k in zip(indegree,outdegree):
+    if j==k:
+        eqlcnt += 1
+    elif j+1 == k:
+        cnt1 +=1
+    elif k+1 == j:
+        cnt2 += 1
+
+if eqlcnt==26:
+    print(1)
+elif eqlcnt + cnt1 + cnt2  ==26 and cnt1+cnt2==2:
+    print(1)
+else:
+    print(0)
